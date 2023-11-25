@@ -7,25 +7,36 @@
     // ask for second integer
     // display results
 
-
-int main()
+int getFirstInput()
 {
     std::cout << "Please enter a number to begin your calculation!" << "\n";
     int x{};
     std::cin >> x;
+    return x;
+}
 
+char getOperation()
+{
     std::cout << "Enter what opperand you want to use (+ , - , * , / , ect...)" << "\n";
-    char opperation{};
-    std::cin >> opperation;
+    char operation{};
+    std::cin >> operation;
+    return operation;
+}
 
+int getSecondInput()
+{
     std::cout << "Enter a second number" << "\n";
     int y{};
     std::cin >> y;
+    return y;
+}
 
+int getResults(int x, char operation, int y)
+{
     int result{};
 
-    // give result based on opperation
-    switch (opperation)
+    // give result based on operation
+    switch (operation)
     {
     case '+':
         result = x + y;
@@ -47,15 +58,24 @@ int main()
             return 1; // returning 1 will exit with an error code
         }
         break;
-    default: 
+    default:
         std::cout << "Error: Invalid opperator. \n";
     }
 
     // display the result
-    std::cout << "The Result of " << x << " " << opperation << " " << y << " is " << result;
+    std::cout << "The Result of " << x << " " << operation << " " << y << " is " << result;
 
     // keep the console window open after the last input
     std::cin.get();
+}
+
+int main()
+{
+    int x = getFirstInput();
+    char operation = getOperation();
+    int y = getSecondInput();
+    getResults(x, operation, y);
+
     return 0;
 }
 
